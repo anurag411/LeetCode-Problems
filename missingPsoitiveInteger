@@ -1,0 +1,29 @@
+
+class Solution {
+    public int firstMissingPositive(int[] nums) {
+        if(nums.length==0)
+            return 1;
+        int last=0;
+        
+        //1)set negative and greater than array length nos as nums.length+1
+        for(int i=0;i<nums.length;i++) {
+            if(nums[i]<=0 || nums[i]>nums.length)
+                nums[i]=nums.length+1;
+        }
+        
+        //2)Treat numbers as index and write negative values at that index.
+        for(int i=0;i<nums.length;i++) {    
+            if((Math.abs(nums[i]))<nums.length)              
+                nums[Math.abs(nums[i])]=-1*Math.abs(nums[Math.abs(nums[i])]);
+        }
+        
+        //3)Find the positive value and return except i=0 becasue we are checking from first minimum positive integer.
+        for(int i=0;i<nums.length;i++) {
+            if( i!=0 && nums[i]>0)
+                return i;
+            if(Math.abs(nums[i])==nums.length)
+                last=1;
+        }
+        return (last==0)?nums.length:nums.length+1;        
+    }
+}
