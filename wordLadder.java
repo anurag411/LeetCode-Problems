@@ -1,3 +1,4 @@
+// time efficient solution its good
 class Solution {
 
   private int L;
@@ -101,7 +102,7 @@ class Solution {
 }
 
 
-// My Solution 
+// My Solution  its space efficient solution but take more time
 
 class Pair {
     int level;
